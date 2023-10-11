@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import ImagesContainer from './Components/ImagesContainer'
+import ImgData from './Components/ImageData'
+import Header from './Components/Header'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-function App() {
+const App = () => {
+
+  const [showData, storeData] = useState(ImgData)
+
+  if (showData.length === 0) {
+    return (
+      <div>
+        <div className='Image-Section'>
+          <Header></Header>
+        </div>
+        <br /><br /><br /><br /><br />
+        <div className='text-center'>
+          <h1 className=' border border-3 '>Reset Image Data</h1>
+          <button className='btn btn-danger px-5' onClick={() => storeData(ImgData)}>Reset</button>
+        </div>
+      </div>
+    )
+  }
+
+  const dataremove = (id) => {
+    const filterData = showData.filter((myid) => {
+      return (
+        myid.id !== id
+      )
+    })
+    storeData(filterData)
+    console.log(filterData)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <React.Fragment>
+      <ImagesContainer fullData={showData} dataremove={dataremove} ></ImagesContainer>
+    </React.Fragment>
+  )
 }
 
-export default App;
+export default App
