@@ -11,7 +11,7 @@ const ImagesContainer = ({ fullData, dataremove }) => {
                 <div className='Image-Section'>
                     <Header></Header>
                     <br/><br/><br/><br/><br/>
-                    <div className='CardsContainer d-flex justify-content-around flex-wrap gap-3 pt-4'>
+                    <div className='CardsContainer d-flex justify-content-around flex-wrap gap-3 pt-4 pb-4'>
                         {
                             fullData.map((array) => {
                                 return <Cards1 {...array} dataremove={dataremove}></Cards1>
