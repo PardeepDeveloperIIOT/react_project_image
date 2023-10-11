@@ -5,7 +5,6 @@ import Header from './Components/Header'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
-
   const [showData, storeData] = useState(ImgData)
 
   if (showData.length === 0) {
